@@ -4,11 +4,15 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 from sklearn.ensemble import RandomForestRegressor
+from sklearn import svm
 
 consump_data = pd.read_csv("hourly-energy-consumption/AEP_hourly.csv")
 consump_data.head()
 str(consump_data)
 consump_data['Datetime'] = pd.to_datetime(consump_data['Datetime'])
+
+consump_data.isnull().sum()
+
 
 consump_data['Month'] = pd.DatetimeIndex(consump_data['Datetime']).month
 consump_data['Year'] = pd.DatetimeIndex(consump_data['Datetime']).year
@@ -30,10 +34,10 @@ consump_data = consump_data.reset_index()
 
 #consump_data = consump_data.assign(baseline_error=abs(consump_data['average'] - consump_data['AEP_MW']))
 
-np.mean(consump_data['baseline_error'])
+#np.mean(consump_data['baseline_error'])
 
-plt.plot(consump_data['Datetime'], consump_data['AEP_MW'], 'b-', label='actual')
-plt.plot(consump_data['Datetime'], consump_data['average'], 'ro', label='baseline prediction')
+#plt.plot(consump_data['Datetime'], consump_data['AEP_MW'], 'b-', label='actual')
+#plt.plot(consump_data['Datetime'], consump_data['average'], 'ro', label='baseline prediction')
 
 
 #Split Columns
@@ -49,17 +53,20 @@ features = np.array(features)
 #Split Data
 train_features, test_features, train_labels, test_labels = train_test_split(features, labels, test_size=0.2, random_state=326)
 
+
+
+
 baseline_preds = test_features[:, feature_list.index('average')]
 baseline_errors = abs(baseline_preds - test_labels)
-
-print('Average baseline error: ', round(np.mean(baseline_errors), 2))
-
-
-rf = RandomForestRegressor(n_estimators=1000, random_state=326)
 
 train_features = np.delete(train_features, 5, axis=1)
 test_features = np.delete(test_features, 5, axis=1)
 
+print('Average baseline error: ', round(np.mean(baseline_errors), 2))
+
+
+#Fit Random Forest Model
+rf = RandomForestRegressor(n_estimators=1000, random_state=326)
 
 
 rf.fit(train_features, train_labels);
@@ -83,5 +90,5 @@ feature_importances = sorted(feature_importances, key = lambda x: x[1], reverse 
 # Print out the feature and importances
 [print('Variable: {:20} Importance: {}'.format(*pair)) for pair in feature_importances];
 
-test_features[:, feature_list.index('Month')]
+#test_features[:, feature_list.index('Month')]
 
