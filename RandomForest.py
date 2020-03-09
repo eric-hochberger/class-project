@@ -4,8 +4,7 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 from sklearn.ensemble import RandomForestRegressor
-from sklearn import svm
-
+from joblib import dump, load
 consump_data = pd.read_csv("hourly-energy-consumption/AEP_hourly.csv")
 consump_data.head()
 str(consump_data)
@@ -81,14 +80,6 @@ mape = 100 * (errors/test_labels)
 
 100 - np.mean(mape)
 
-# Get numerical feature importances
-importances = list(rf.feature_importances_)
-# List of tuples with variable and importance
-feature_importances = [(feature, round(importance, 2)) for feature, importance in zip(feature_list, importances)]
-# Sort the feature importances by most important first
-feature_importances = sorted(feature_importances, key = lambda x: x[1], reverse = True)
-# Print out the feature and importances
-[print('Variable: {:20} Importance: {}'.format(*pair)) for pair in feature_importances];
 
-#test_features[:, feature_list.index('Month')]
 
+dump(rf, 'rf.joblib')
