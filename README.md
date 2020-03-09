@@ -7,11 +7,9 @@ I worked on training models and developing a front-end dashboard for PredicT thr
 
 Over the course of the quarter, I did extensive research in order to identify what the best dashboard option would be for PredicT, a time-series data prediction product, which is being developed according to a proposed cloud-based data science infrastructure. I isolated Tableau as the best option due to its interactive nature, clear and simple design and capability in connecting with AWS data sources, which are central to PredicT's functionality. I deployed a Tableau dashboard on the AWS cloud via Tableau Server and developed a local template dashboard to be used once PredicT's data lake is functional. 
 
+The infrastructure of PredicT is intended to be such that each module can be containerized and deployed to the cloud. It was thus important that each individual module be able to be deployed and connected via a singular cloud provider hence the emphasis on Amazon Web Services. Examples include deploying and training models on Amazon's SageMaker or utilizing an AWS Data Lake in addition to the previously cited example of Tableau. 
 
-
-RandomForest.py contains the code I used to train a random forest regression model on monthly energy consumption data accessed here: https://www.kaggle.com/robikscube/hourly-energy-consumption/version/3
-
-Link to saved model: https://drive.google.com/file/d/1zohR0Q08IoI4Bi1KdVo_QiTVecHE2W-E/view?usp=sharing
+The next steps in order to improve upon the Data Visualization module include connecting directly to Amazon SageMaker once Tableau releases the [forthcoming SageMaker native data connector](https://www.tableau.com/about/blog/2018/10/our-ongoing-work-aws-support-your-cloud-analytics-journey-95959). An additional improvement would be to automatically detect how granular the submitted time-series data is and automatically adjust the "Date Granularity" field introduced below accordingly.   
 
 ### Reproducibility
 1. Obtain a Tableau Server [license key](https://buy.tableau.com/#server)
@@ -40,8 +38,10 @@ Link to saved model: https://drive.google.com/file/d/1zohR0Q08IoI4Bi1KdVo_QiTVec
 
 10. Create new dashboard and drag and drop previously-created sheet
 
+TableauExample.twbx serves as a local template, using [this data](https://github.com/eric-hochberger/class-project/blob/master/hourly-energy-consumption/AEP_hourly.csv). 
 
+For the model training, RandomForest.py contains the code I used to train a random forest regression model on monthly energy consumption data accessed here: https://www.kaggle.com/robikscube/hourly-energy-consumption/version/3
 
-
+Link to saved model: https://drive.google.com/file/d/1zohR0Q08IoI4Bi1KdVo_QiTVecHE2W-E/view?usp=sharing
 
 
