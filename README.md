@@ -9,9 +9,6 @@ Over the course of the quarter, I did extensive research in order to identify wh
 
 
 
-
-
-
 RandomForest.py contains the code I used to train a random forest regression model on monthly energy consumption data accessed here: https://www.kaggle.com/robikscube/hourly-energy-consumption/version/3
 
 Link to saved model: https://drive.google.com/file/d/1zohR0Q08IoI4Bi1KdVo_QiTVecHE2W-E/view?usp=sharing
@@ -23,6 +20,28 @@ Link to saved model: https://drive.google.com/file/d/1zohR0Q08IoI4Bi1KdVo_QiTVec
 
 3. Follow [this tutorial](https://aws-quickstart.s3.amazonaws.com/quickstart-tableau-server/doc/tableau-server-on-the-aws-cloud.pdf) in order to deploy the Tableau Server on the AWS cloud using Option 2 and using "0.0.0.0/0" as the "Source CIDR for Access" and your Tableau key from above. (Note: there may be some additional steps in order to make sure an EC2 instance can be launched, but the stack deployment will prompt these)
 
-4. Create a new Tableau dashboard
+4. Connect via [Amazon Athena](https://www.tableau.com/about/blog/2017/5/connect-your-s3-data-amazon-athena-connector-tableau-103-71105) to S3 bucket containing time series data and predictions
 
-5. 
+5. Create a new sheet in Tableau
+
+6. Create a "[Date Granularity](https://evolytics.com/blog/tableau-201-change-date-aggregation-using-parameters/)" field according to steps 1 and 2
+
+7. Ensure "Date Granularity" is continuous, drag to Columns and change the date option to "Exact Date"
+![Screen Shot 2020-03-09 at 2 27 47 PM](https://user-images.githubusercontent.com/55408707/76249889-37018000-6212-11ea-971b-b9299093144e.png)
+
+
+8. Drag time-series data (ex: "Actual", "Prediction") to Rows, and change the aggregate measure to "Average"
+
+![Screen Shot 2020-03-09 at 2 30 28 PM](https://user-images.githubusercontent.com/55408707/76250061-8ba4fb00-6212-11ea-854c-c31daa76f5e8.png)
+
+9. Select "Show Parameter Control" for the "Date Granularity" parameter which will enable a drop-down menu for "Date Granularity"
+![Screen Shot 2020-03-09 at 2 33 00 PM](https://user-images.githubusercontent.com/55408707/76250314-1ab21300-6213-11ea-8207-ab7f44808b0f.png)
+![Screen Shot 2020-03-09 at 2 36 24 PM](https://user-images.githubusercontent.com/55408707/76250976-41247e00-6214-11ea-91b2-536e3e42d58a.png)
+
+10. Create new dashboard and drag and drop previously-created sheet
+
+
+
+
+
+
