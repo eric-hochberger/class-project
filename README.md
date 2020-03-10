@@ -40,7 +40,7 @@ The next steps in order to improve upon the Data Visualization module include co
 
 TableauExample.twbx serves as a local template, using [this data](https://github.com/eric-hochberger/class-project/blob/master/hourly-energy-consumption/AEP_hourly.csv). 
 
-For the model training, RandomForest.py contains the code I used to train a random forest regression model on monthly energy consumption data accessed here: https://www.kaggle.com/robikscube/hourly-energy-consumption/version/3
+For the model training, RandomForest.py contains the code I used to train a random forest regression model on monthly energy consumption data accessed here: https://www.kaggle.com/robikscube/hourly-energy-consumption/version/3. The code is runnable as long as the hourly-energy-consumption folder is in the working directory. Note that the output is a trained model file which takes up 4 GB. 
 
 Link to saved model: https://drive.google.com/file/d/1zohR0Q08IoI4Bi1KdVo_QiTVecHE2W-E/view?usp=sharing
 
